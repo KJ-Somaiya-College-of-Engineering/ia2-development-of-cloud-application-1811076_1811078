@@ -17,5 +17,9 @@ jobs:
   
   test_build:
     needs: test_commit
+    runs-on: ubuntu-latest
     steps:
+      - uses: actions/setup-node@v1
+          with:
+            node-version: 12
       - run: npm run build
