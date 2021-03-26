@@ -1,20 +1,12 @@
 name: Firebase Continuous Deployment
 
-on:
-  push:
-    branches: [ master ]
-
-
+name: Deploy to Firebase Hosting on push
+'on': push
 jobs:
-  deploy:
+  build_and_preview:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@master
-        with:
-          node-version: 12
-      - run: npm ci
-      - run: npm run build
+      - uses: actions/checkout@v2
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
