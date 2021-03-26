@@ -4,7 +4,12 @@ jobs:
   build_and_preview:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+        with:
+          node-version: 12
+      - run: npm ci
+      - run: npm run build
       - id: set-firebase-hosting-channel-id
         name: set Firebase preview channel projectId
         run: echo "::set-output name=channel-id::$(echo pr${{ github.event.number }}-$(echo ${{ github.event.pull_request.head.ref }} | cut -c1-20) | sed -e 's/[-_]$//g' | sed -e 's/[^a-zA-Z0-9\.\-]/_/g')"
