@@ -15,8 +15,10 @@ jobs:
           node-version: 12
       - run: npm ci
       - run: npm run build
-      - uses: w9jds/firebase-action@master
+      - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          args: deploy --only hosting
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DEVOPS_TODOS }}'
+          projectId: devops-todos
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DEVOPS_TODOS }}
+          FIREBASE_CLI_PREVIEWS: hostingchannels
