@@ -10,15 +10,11 @@ jobs:
           node-version: 12
       - run: npm ci
       - run: npm run build
-      - id: set-firebase-hosting-channel-id
-        name: set Firebase preview channel projectId
-        run: echo "::set-output name=channel-id::$(echo pr${{ github.event.number }}-$(echo ${{ github.event.pull_request.head.ref }} | cut -c1-20) | sed -e 's/[-_]$//g' | sed -e 's/[^a-zA-Z0-9\.\-]/_/g')"
-
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DEVOPS_TODOS }}'
           projectId: devops-todos
-          channelId: ${{ steps.set-firebase-hosting-channel-id.outputs.channel-id }}
+          channelId: live
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
