@@ -1,14 +1,14 @@
 header {
     background-color: #f5ba13;
     margin: auto -16px;
-    padding: 16px 32px;
+    padding: 8px 32px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
 
 header h1 {
-    color: #fff;
-    font-family: "McLaren", cursive;
-    font-weight: 200;
+    color: #fafafa;
+    font-family: "Roboto", cursive;
+    font-weight: 400;
 }
 
 footer {
@@ -20,7 +20,7 @@ footer {
 }
 
 footer p {
-    color: #ccc;
+    color: #888;
 }
 
 .note {
@@ -51,8 +51,10 @@ footer p {
     margin-right: 10px;
     color: #f5ba13;
     border: none;
-    width: 36px;
-    height: 36px;
+    width: 24px;
+    height: 24px;
+    border: #ccc;
+    border-radius: 5px;
     cursor: pointer;
     outline: none;
 }

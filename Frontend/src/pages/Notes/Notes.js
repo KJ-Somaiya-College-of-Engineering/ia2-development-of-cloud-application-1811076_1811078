@@ -3,7 +3,7 @@ import Header from "../../components/Note/Header";
 import Footer from "../../components/Footer/Footer";
 import Note from "../../components/Note/Note";
 import CreateArea from "../../components/Note/CreateArea";
-import SignIn from "../../components/Login/Login";
+import './Note.css';
 
 function Notes() {
     const [notes, setNotes] = useState([]);
@@ -37,7 +37,6 @@ function Notes() {
             />
             );
         })}
-        <SignIn/>
         <Footer />
         </div>
     );
