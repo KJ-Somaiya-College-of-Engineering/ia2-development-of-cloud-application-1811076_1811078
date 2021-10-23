@@ -1,4 +1,5 @@
 import React from "react";
+import './Note.css';
 
 function Note(props) {
   function handleClick() {
