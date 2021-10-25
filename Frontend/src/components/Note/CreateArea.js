@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 
-function CreateArea(props) {
-  const [note, setNote] = useState({
-    title: "",
-    content: ""
-  });
+const BLANK_NOTE = {
+  title: "",
+  content: ""
+};
 
-  function handleChange(event) {
+const CreateArea = (props) => {
+  const [note, setNote] = useState(BLANK_NOTE);
+  const [errorVisibility, setErrorVisibility] = useState(false);
+
+  const handleChange = (event) => {
     const { name, value } = event.target;
+    if(errorVisibility) setErrorVisibility(false)
 
     setNote(prevNote => {
       return {
@@ -17,13 +21,20 @@ function CreateArea(props) {
     });
   }
 
-  function submitNote(event) {
-    props.onAdd(note);
-    setNote({
-      title: "",
-      content: ""
-    });
+  const handleOnKeyDown = (event) => {
+    if(event.keyCode===13 && event.ctrlKey){
+      submitNote(event);
+    }
+  }
+
+  const submitNote = (event) => {
     event.preventDefault();
+    if(note.title.trim() === "" || note.content.trim() === ""){
+      setErrorVisibility(true);
+      return;
+    }
+    props.onAdd(note);
+    setNote(BLANK_NOTE);
   }
 
   return (
@@ -38,12 +49,17 @@ function CreateArea(props) {
         <textarea
           name="content"
           onChange={handleChange}
+          onKeyDown={handleOnKeyDown}
           value={note.content}
           placeholder="Take a note..."
           rows="3"
         />
         <button onClick={submitNote}>Add</button>
       </form>
+      
+      <div className="errorContainer" style={{visibility:errorVisibility?"visible":"hidden"}}>
+        <h4 className="errorMessage">Note title and content cannot be empty!</h4>
+      </div>
     </div>
   );
 }

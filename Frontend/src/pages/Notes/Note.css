@@ -11,6 +11,18 @@ header h1 {
     font-weight: 400;
 }
 
+.errorContainer{
+    padding: 0 32%;
+}
+
+.errorMessage{
+    text-align: center;
+    background-color:#faafaa;
+    width:100%;
+    padding: 2% 0;
+    border-radius:15px;
+}
+
 footer {
     position: absolute;
     text-align: center;
