@@ -4,7 +4,7 @@ import SignInForm from '../../components/Login/SignInForm';
 import WelcomeCard from '../../components/Login/WelcomeCard';
 import './Login.css';
 
-export default function Login() {
+export default function LoginPage() {
     return(
         <div className="login-wrapper">
             <div className="container" id="container">
