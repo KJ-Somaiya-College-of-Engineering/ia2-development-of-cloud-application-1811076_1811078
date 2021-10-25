@@ -8,8 +8,8 @@ export default function RegisterPage() {
     return (
         <div className="register-wrapper">
             <div class="registration-container" id="container">
-                <RegistrationForm/>
                 <InfoCard/>
+                <RegistrationForm/>
             </div>
             <Footer/>
         </div>

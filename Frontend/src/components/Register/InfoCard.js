@@ -2,14 +2,15 @@ import React from 'react'
 
 export default function InfoCard() {
     return (
-        <div class="form-container-register sign-up-container overlay-panel overlay-right">
-            <form action="#" className="registrationForm">
-                <h1 className="registerTitle">Create Account</h1>
-                <input className="auth-input" type="text" placeholder="Name" />
-                <input className="auth-input" type="email" placeholder="Email" />
-                <input className="auth-input" type="password" placeholder="Password" />
-                <button className="registerButton">Register</button>
-            </form>
+        <div className="overlay-container-registration">
+            <div class="overlay-registration">
+                <div class="overlay-panel-registration overlay-left-registration">
+                    <h1>Hello, friend!</h1>
+                    <p className="registerMessage">Create new account with</p>
+                    <p> your email to start using</p>
+                    <p className="notesOnCloudRegister">Notes On Cloud</p>
+                </div>
+            </div>
         </div>
     )
 }
