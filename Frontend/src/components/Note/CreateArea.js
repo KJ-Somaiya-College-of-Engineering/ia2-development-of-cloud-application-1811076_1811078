@@ -39,7 +39,7 @@ const CreateArea = (props) => {
 
   return (
     <div>
-      <form>
+      <form className="notesForm">
         <input
           name="title"
           onChange={handleChange}
@@ -54,7 +54,7 @@ const CreateArea = (props) => {
           placeholder="Take a note..."
           rows="3"
         />
-        <button onClick={submitNote}>Add</button>
+        <button className="addbutton" onClick={submitNote}>Add</button>
       </form>
       
       <div className="errorContainer" style={{visibility:errorVisibility?"visible":"hidden"}}>

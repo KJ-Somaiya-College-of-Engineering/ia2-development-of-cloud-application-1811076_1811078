@@ -5,10 +5,10 @@ header {
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
 
-header h1 {
-    color: #fafafa;
+header>h2 {
+    color: rgb(167, 0, 0);
     font-family: "Roboto", cursive;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .errorContainer{
@@ -71,7 +71,7 @@ footer p {
     outline: none;
 }
 
-form {
+.notesForm {
     position: relative;
     width: 480px;
     margin: 30px auto 20px auto;
@@ -92,7 +92,7 @@ form textarea {
     resize: none;
 }
 
-form button {
+form .addbutton {
     position: absolute;
     right: 18px;
     bottom: -18px;
