@@ -4,11 +4,11 @@ import SignInForm from '../../components/Login/SignInForm';
 import WelcomeCard from '../../components/Login/WelcomeCard';
 import './Login.css';
 
-export default function LoginPage() {
+export default function LoginPage(props) {
     return(
         <div className="login-wrapper">
             <div className="container" id="container">
-                <SignInForm/>
+                <SignInForm setToken={props.setToken}/>
                 <WelcomeCard/>
             </div>
             <Footer/>
