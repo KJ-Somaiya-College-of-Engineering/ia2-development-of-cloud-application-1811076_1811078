@@ -3,12 +3,23 @@ import Header from "../../components/Note/Header";
 import Footer from "../../components/Footer/Footer";
 import Note from "../../components/Note/Note";
 import CreateArea from "../../components/Note/CreateArea";
+import { useHistory } from 'react-router-dom';
 
 import './Note.css';
+import Modal from "../../utils/Modal";
 
 const NotesPage = () => {
-    const [notes, setNotes] = useState([]);
+    const history = useHistory();
     
+    const [notes, setNotes] = useState([]);
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const redirectOnLogout = (e) => {
+        e.preventDefault();
+        localStorage.removeItem("NOCTokenDetails");    
+        history.go("/login");
+    }
+
     const addNote = (newNote) => {
         setNotes(prevNotes => {
             return [...prevNotes, newNote];
@@ -25,7 +36,7 @@ const NotesPage = () => {
 
     return (
         <div>
-            <Header />
+            <Header setIsModalVisible={setIsModalVisible} />
             <CreateArea onAdd={addNote} />
             {notes.map((noteItem, index) => {
                 return (
@@ -38,6 +49,12 @@ const NotesPage = () => {
                 />
                 );
             })}
+            {isModalVisible 
+                &&
+                <div className="modalContainer">
+                    <Modal setIsModalVisible={setIsModalVisible} redirectOnLogout={redirectOnLogout}/>
+                </div>
+                }
             <Footer /> 
         </div>
     );
