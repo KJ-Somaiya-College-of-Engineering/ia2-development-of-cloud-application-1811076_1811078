@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios';
 import {API_BASE_ROUTE, REQUEST_HEADERS} from '../../config/serverConfig';
+import { useHistory } from 'react-router-dom';
 
 const BLANK_CREDENTIALS = {
     email:"",
@@ -20,7 +21,8 @@ const errorMessageStyles = {
     borderRadius:"15px"
 }
 
-export default function SignInForm() {
+export default function SignInForm(props) {
+    const history = useHistory();
     const [creds, setCreds] = useState(BLANK_CREDENTIALS);
     const [error, setError] = useState(BLANK_ERROR);
 
@@ -28,6 +30,18 @@ export default function SignInForm() {
         const response = await axios.post(`${API_BASE_ROUTE}/auth/signin`, creds, {headers:REQUEST_HEADERS});
 
         if(response){
+            const token = response.data.accessToken;
+            const userId = response.data.id;
+            const email = response.data.email;
+            const name = response.data.name;
+            const joiningDate = response.data.joiningDate;
+
+            const NOCTokenDetails = {
+                token, userId, email, name, joiningDate, loggedInOn: new Date()
+            }
+
+            props.setToken(NOCTokenDetails);
+            history.replace("/notes");
             return response;
         }
     }
