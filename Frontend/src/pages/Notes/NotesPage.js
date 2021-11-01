@@ -38,6 +38,12 @@ const NotesPage = () => {
         <div>
             <Header setIsModalVisible={setIsModalVisible} />
             <CreateArea onAdd={addNote} />
+            {isModalVisible 
+                &&
+                <div className="modalContainer">
+                    <Modal setIsModalVisible={setIsModalVisible} redirectOnLogout={redirectOnLogout}/>
+                </div>
+                }
             {notes.map((noteItem, index) => {
                 return (
                 <Note
@@ -49,12 +55,6 @@ const NotesPage = () => {
                 />
                 );
             })}
-            {isModalVisible 
-                &&
-                <div className="modalContainer">
-                    <Modal setIsModalVisible={setIsModalVisible} redirectOnLogout={redirectOnLogout}/>
-                </div>
-                }
             <Footer /> 
         </div>
     );

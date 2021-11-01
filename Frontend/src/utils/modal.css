@@ -6,6 +6,7 @@
 }
 
 .modal {
+    position: absolute;
     width: 300px;
     align-items: center;
     justify-content: center;
