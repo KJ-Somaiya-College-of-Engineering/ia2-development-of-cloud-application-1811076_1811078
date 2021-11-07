@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import {API_BASE_ROUTE, REQUEST_HEADERS} from '../../config/serverConfig';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const BLANK_CREDENTIALS = {
     email:"",
@@ -23,8 +23,20 @@ const errorMessageStyles = {
 
 export default function SignInForm(props) {
     const history = useHistory();
+    const location = useLocation();
     const [creds, setCreds] = useState(BLANK_CREDENTIALS);
     const [error, setError] = useState(BLANK_ERROR);
+
+    useEffect(() => {
+        if(location.state){
+        setCreds(prev => {
+            return {
+                ...prev,
+                email:location.state.email
+            };
+        });
+        }   
+    }, [location.state]);
 
     const loginUser = async(creds) => {
         const response = await axios.post(`${API_BASE_ROUTE}/auth/signin`, creds, {headers:REQUEST_HEADERS});
