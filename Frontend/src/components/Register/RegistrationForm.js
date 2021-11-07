@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios';
 import {API_BASE_ROUTE, REQUEST_HEADERS} from '../../config/serverConfig';
-
+import { useHistory } from 'react-router-dom';
 const BLANK_DETAILS = {
     name:"",
     email:"",
@@ -22,13 +22,15 @@ const errorMessageStyles = {
 }
 
 export default function RegistrationForm(props) {
+    const history = useHistory();
     const [userDetails, setUserDetails] = useState(BLANK_DETAILS);
     const [error, setError] = useState(BLANK_ERROR);
 
     const registerUser = async(userInfo) => {
         const response = await axios.post(`${API_BASE_ROUTE}/auth/signup`, {...userInfo, joiningDate: new Date()}, {headers:REQUEST_HEADERS});
         console.log(response);
-        if(response ){
+        if(response.status === 200 ){
+            history.replace({pathname:`/login`, state:{email:userInfo.email}});
             return response;
         }
     }
