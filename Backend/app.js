@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-
+require('dotenv').config();
 const app = express();
 
 var corsOptions = {
@@ -18,12 +18,20 @@ app.use(express.urlencoded({
 }));
 
 const db = require("./models");
-const dbConfig = require("./config/db.config");
+
+const dbConfig = {
+  USER:process.env.NOC_DB_USER,
+  PASSWORD:process.env.NOC_DB_PASSWORD,
+  HOST: process.env.NOC_DB_HOST,
+  PORT: process.env.NOC_DB_PORT,
+  DBNAME: process.env_NOC_DB_DB,
+  OPTIONS: process.env.NOC_DB_OPTIONS
+};
 
 db.mongoose
-  .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+  .connect(`mongodb+srv://${dbConfig.USER}:${dbConfig.PASSWORD}@${dbConfig.HOST}/${dbConfig.DBNAME}?${dbConfig.OPTIONS}`, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true 
   })
   .then(() => {
     console.log("Successfully connected to MongoDB.");
@@ -35,6 +43,7 @@ db.mongoose
 
 //Routes
 require('./routes/auth.routes')(app);
+require('./routes/note.routes')(app);
 
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to Notes on cloud!!" });
