@@ -56,6 +56,10 @@ footer p {
     color: #888;
 }
 
+.notesWrapper{
+padding: 0 auto;
+}
+
 .note {
     background: #fff;
     border-radius: 7px;
@@ -66,22 +70,49 @@ footer p {
     float: left;
 }
 
-.note h1 {
+.note>.noteTitle {
     font-size: 1.1em;
     margin-bottom: 6px;
 }
 
-.note p {
+.note>.noteContent {
     font-size: 1.1em;
     margin-bottom: 10px;
     white-space: pre-wrap;
     word-wrap: break-word;
 }
 
-.note button {
+.note>.NoteFooter{
+    padding-top: 5px;
+}
+
+.note>.NoteFooter>.creationDate {
+    font-size: 0.85em;
+    position: relative;
+    float: left;
+    color: grey;
+    outline: none;
+}
+
+.note>.NoteFooter>.NoteButtonGroup {
     position: relative;
     float: right;
     margin-right: 10px;
+}
+
+.note>.NoteFooter>.NoteButtonGroup>.favouriteNoteButton {
+    color: #f5ba13;
+    border: none;
+    width: 24px;
+    height: 24px;
+    margin-right: 4px;
+    border: #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+.note>.NoteFooter>.NoteButtonGroup>.deleteNoteButton {
     color: #f5ba13;
     border: none;
     width: 24px;
