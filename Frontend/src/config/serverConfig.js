@@ -1,4 +1,4 @@
-const API_BASE_ROUTE = "http://localhost:5000/api";
+const API_BASE_ROUTE = "https://notes-on-cloud-backend.herokuapp.com/api";
 const REQUEST_HEADERS = {
     'Content-Type': 'application/json',
 };

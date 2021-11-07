@@ -39,6 +39,7 @@ const CreateArea = (props) => {
       timestamp: new Date(),
     }
     const response = await axios.post(`${API_BASE_ROUTE}/note/new`, newNote, {headers:{'x-access-token':userData.accessToken, ...REQUEST_HEADERS}});
+    console.log(response.status);
   }
 
 
