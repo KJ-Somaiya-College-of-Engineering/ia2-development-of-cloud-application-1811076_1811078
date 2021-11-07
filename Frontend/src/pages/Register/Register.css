@@ -33,7 +33,6 @@
     margin-top: 5px;
     font-weight: 600;
     color: rgb(167, 0, 0);
-    text-decoration: underline;
 }
 
 /* a {
@@ -85,6 +84,10 @@
     width: 768px;
     max-width: 100%;
     min-height: 480px;
+}
+
+.registerFooter{
+	padding-top: 2rem;
 }
 
 .info-container {

@@ -33,7 +33,6 @@
     font-size: large;
     font-weight: 600;
     color: rgb(167, 0, 0);
-    text-decoration: underline;
 }
 
 /* a {
@@ -98,6 +97,14 @@
 	left: 0;
 	width: 50%;
 	z-index: 2;
+}
+
+.loginFooter{
+	padding-top: 2rem;
+}
+
+.authFooterLink{
+	color: rgb(167, 0, 0);
 }
 
 .container.right-panel-active .sign-in-container {
