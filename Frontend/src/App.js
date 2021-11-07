@@ -1,12 +1,11 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 
-// import Profile from "./pages/Profile/Profile";
 import Notes from "./pages/Notes/NotesPage";
 import Login from "./pages/Login/LoginPage";
 import Register from "./pages/Register/RegisterPage";
 import useToken from "./utils/useToken";
-
+import UserProvider from "./context/user.provider";
 import './App.css';
 function App() {
   const { token, setToken } = useToken();
@@ -15,6 +14,7 @@ function App() {
     <div>
         <BrowserRouter>
           <Switch>
+          <UserProvider>
             <Route path="/" exact render={_ => 
             (
               <Redirect to={{pathname: token?'/notes':'/login'}}/>
@@ -34,6 +34,7 @@ function App() {
             {/* <Route path="/profile">
               <Profile/> 
             </Route> */}
+            </UserProvider>
           </Switch>
         </BrowserRouter>
     </div>
