@@ -28,15 +28,12 @@ const dbConfig = {
   OPTIONS: process.env.NOC_DB_OPTIONS
 };
 
-db.mongoose
-  .connect(`mongodb+srv://${dbConfig.USER}:${dbConfig.PASSWORD}@${dbConfig.HOST}/${dbConfig.DBNAME}?${dbConfig.OPTIONS}`, {
+db.mongoose.connect(`mongodb+srv://${dbConfig.USER}:${dbConfig.PASSWORD}@${dbConfig.HOST}/${dbConfig.DBNAME}?${dbConfig.OPTIONS}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true 
-  })
-  .then(() => {
+  }).then(() => {
     console.log("Successfully connected to MongoDB.");
-  })
-  .catch(err => {
+  }).catch(err => {
     console.error("MongoDB Connection error", err);
     process.exit();
   });
