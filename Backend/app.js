@@ -4,7 +4,7 @@ require('dotenv').config();
 const app = express();
 
 var corsOptions = {
-  origin: "https://notesoncloud.netlify.app/"
+  origin: "https://notesoncloud.netlify.app"
 };
 
 app.use(cors(corsOptions));
