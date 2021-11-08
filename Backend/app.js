@@ -24,7 +24,7 @@ const dbConfig = {
   PASSWORD:process.env.NOC_DB_PASSWORD,
   HOST: process.env.NOC_DB_HOST,
   PORT: process.env.NOC_DB_PORT,
-  DBNAME: process.env_NOC_DB_DBNAME,
+  DBNAME: process.env.NOC_DB_DBNAME,
   OPTIONS: process.env.NOC_DB_OPTIONS
 };
 
